@@ -41,5 +41,6 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
     /* find by estado */
     @Query("SELECT p FROM Pedido p WHERE p.estado = ?1")
     List<Pedido> findByEstado(Estado estado);
+    
 
 }

@@ -25,5 +25,4 @@ public interface ItemDelPedidoRepository extends JpaRepository<ItemDelPedido, Lo
     @Query("SELECT SUM(i.precioUnitario)*i.cantidad FROM ItemDelPedido i WHERE i.idProducto = ?1")
     Double calcSumForTotalDeVentas(Producto Producto);
 
-
 }

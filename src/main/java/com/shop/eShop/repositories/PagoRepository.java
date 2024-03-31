@@ -38,4 +38,5 @@ public interface PagoRepository extends JpaRepository<Pago, Long> {
     @Query("SELECT p FROM Pago p WHERE p.metodoPago = ?1")
     List<Pago> findByMetodoPago(metodoPago metodoPago);
 
+    
 }

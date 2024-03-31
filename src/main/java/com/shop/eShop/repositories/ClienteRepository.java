@@ -22,5 +22,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     /** find by address */
     @Query("SELECT c FROM Cliente c WHERE LOWER(c.direccion) LIKE LOWER(CONCAT('%', ?1, '%'))")
     public List<Cliente> findByDireccion(String direccion);
-
+    
 }
