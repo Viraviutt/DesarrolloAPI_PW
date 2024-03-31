@@ -16,4 +16,12 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     @Query("SELECT p FROM Producto p WHERE LOWER(p.nombre) LIKE LOWER(CONCAT('%', ?1, '%'))")
     List<Producto> findByNombre(String nombre);
 
+    /* find by stock */
+    @Query("SELECT p FROM Producto p WHERE p.stock > 0")
+    List<Producto> findByStock();
+
+    /* find by precio y stock */
+    @Query("SELECT p FROM Producto p WHERE p.precio < ?1 AND p.stock = ?2")
+    List<Producto> findByPrecioANDStock(Double precio, Integer stock);
+
 }

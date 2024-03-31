@@ -1,7 +1,6 @@
 package com.shop.eShop.repositories;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,12 +11,16 @@ import com.shop.eShop.entities.Cliente;
 @RepositoryRestResource
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
+    /* find by nombre que inicie por */
+    @Query("SELECT c FROM Cliente c WHERE LOWER(c.nombre) LIKE LOWER(CONCAT(?1, '%'))")
+    public List<Cliente> findByNombre(String nombre);
+
     /* find by email */
-    @Query("SELECT c FROM Cliente c WHERE c.email = ?1")
-    Cliente findByEmail(String correo);
+    @Query("SELECT c FROM Cliente c WHERE LOWER(c.correo) LIKE LOWER(CONCAT('%', ?1, '%'))")
+    public List<Cliente> findByEmail(String correo);
 
     /** find by address */
-    @Query("SELECT c FROM Cliente c WHERE c.address = ?1")
-    List<Cliente> findByDireccion(String direccion);
+    @Query("SELECT c FROM Cliente c WHERE LOWER(c.direccion) LIKE LOWER(CONCAT('%', ?1, '%'))")
+    public List<Cliente> findByDireccion(String direccion);
 
 }
