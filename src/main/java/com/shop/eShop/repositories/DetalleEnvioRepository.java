@@ -28,5 +28,5 @@ public interface DetalleEnvioRepository extends JpaRepository<DetalleEnvio, Long
 
     /* find by estado del pedido */
     @Query("SELECT d FROM DetalleEnvio d WHERE d.idPedido.estado = ?1")
-    DetalleEnvio findByEstadoDelPedid(Estado estado);
+    DetalleEnvio findByEstadoDelPedido(Estado estado);
 }
