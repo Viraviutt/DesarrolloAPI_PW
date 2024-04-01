@@ -98,7 +98,7 @@ public class PagoRepositoryTest {
                 .fechaPago(Timestamp.valueOf(LocalDateTime.of(2024, 2, 10, 10, 38, 12)))
                 .metodoPago("TARJETA_CREDITO")
                 .build();
-/* 
+
     @BeforeEach
     void setUp() {
         pagoRepository.deleteAll();
@@ -116,7 +116,7 @@ public class PagoRepositoryTest {
         pedidoRepository.deleteAll();
         
     }
-*/
+
     @Test
     void givenAnPago_whenSave_thenClientewithId(){ //CREATE
         //given pago
