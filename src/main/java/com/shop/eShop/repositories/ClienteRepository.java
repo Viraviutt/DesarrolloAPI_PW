@@ -15,11 +15,11 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     @Query("SELECT c FROM Cliente c WHERE LOWER(c.nombre) LIKE LOWER(CONCAT(?1, '%'))")
     public List<Cliente> findByNombre(String nombre);
 
-    /* find by email */
+    /* find by correo */
     @Query("SELECT c FROM Cliente c WHERE LOWER(c.correo) LIKE LOWER(CONCAT('%', ?1, '%'))")
-    public List<Cliente> findByEmail(String correo);
+    public List<Cliente> findByCorreo(String correo);
 
-    /** find by address */
+    /** find by direccion */
     @Query("SELECT c FROM Cliente c WHERE LOWER(c.direccion) LIKE LOWER(CONCAT('%', ?1, '%'))")
     public List<Cliente> findByDireccion(String direccion);
     
