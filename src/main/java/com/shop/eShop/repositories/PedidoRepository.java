@@ -9,7 +9,6 @@ import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 import com.shop.eShop.entities.Cliente;
 import com.shop.eShop.entities.Pedido;
-import com.shop.eShop.enums.Estado;
 
 @RepositoryRestController
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
@@ -32,15 +31,15 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
     /* find by pedidos de un cliente */
     @Query("SELECT p FROM Pedido p WHERE p.idCliente = ?1")
-    Cliente findByCliente(Cliente idCliente);
+    List<Pedido> findByCliente(Cliente idCliente);
 
     /* find by cliente y estado */
     @Query("SELECT p FROM Pedido p WHERE p.idCliente = ?1 AND p.estado = ?2")
-    List<Pedido> findByClienteAndEstado(Cliente idCliente, Estado estado);
+    List<Pedido> findByClienteAndEstado(Cliente idCliente, String estado);
 
     /* find by estado */
     @Query("SELECT p FROM Pedido p WHERE p.estado = ?1")
-    List<Pedido> findByEstado(Estado estado);
+    List<Pedido> findByEstado(String estado);
     
 
 }

@@ -2,7 +2,6 @@ package com.shop.eShop.entities;
 
 import java.sql.Timestamp;
 
-import com.shop.eShop.enums.Estado;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,5 +38,5 @@ public class Pedido {
     private Timestamp fechaPedido;
 
     @Column(nullable = false)
-    private Estado estado;
+    private String estado;
 }

@@ -2,7 +2,6 @@ package com.shop.eShop.entities;
 
 import java.sql.Timestamp;
 
-import com.shop.eShop.enums.metodoPago;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,5 +42,5 @@ public class Pago {
     private Timestamp fechaPago;
 
     @Column(nullable = false)
-    private metodoPago metodoPago;
+    private String metodoPago;
 }

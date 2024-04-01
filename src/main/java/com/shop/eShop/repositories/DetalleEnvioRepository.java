@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 import com.shop.eShop.entities.DetalleEnvio;
-import com.shop.eShop.enums.Estado;
 
 
 @RepositoryRestController
@@ -28,6 +27,6 @@ public interface DetalleEnvioRepository extends JpaRepository<DetalleEnvio, Long
 
     /* find by estado del pedido */
     @Query("SELECT d FROM DetalleEnvio d WHERE d.idPedido.estado = ?1")
-    DetalleEnvio findByEstadoDelPedido(Estado estado);
+    DetalleEnvio findByEstadoDelPedido(String estado);
     
 }

@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 import com.shop.eShop.entities.Pago;
-import com.shop.eShop.enums.metodoPago;
 
 @RepositoryRestController
 public interface PagoRepository extends JpaRepository<Pago, Long> {
@@ -32,11 +31,11 @@ public interface PagoRepository extends JpaRepository<Pago, Long> {
 
     /* find by id del pedido y metodo de pago */
     @Query("SELECT p FROM Pago p WHERE p.idPedido.idPedido = ?1 AND p.metodoPago = ?2")
-    Optional<Pago> findByIdAndMetodo(Long idPedido, metodoPago metodoPago);
+    Optional<Pago> findByIdAndMetodo(Long idPedido, String metodoPago);
 
     /* find by metodo de pago */
     @Query("SELECT p FROM Pago p WHERE p.metodoPago = ?1")
-    List<Pago> findByMetodoPago(metodoPago metodoPago);
+    List<Pago> findByMetodoPago(String metodoPago);
 
     
 }
