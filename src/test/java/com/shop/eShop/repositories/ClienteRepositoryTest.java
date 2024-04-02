@@ -3,7 +3,6 @@ package com.shop.eShop.repositories;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
@@ -20,10 +19,10 @@ public class ClienteRepositoryTest extends AbstractIntegrationDBTest {
     private ClienteRepository clienteRepository;
 
     Cliente cliente = Cliente.builder()
-    .nombre("Julian")
-    .correo("julian@example.com")
-    .direccion("Calle 1 #2-3")
-    .build();
+                    .nombre("Julian")
+                    .correo("julian@example.com")
+                    .direccion("Calle 1 #2-3")
+                    .build();
 
     Cliente cliente1 = Cliente.builder()
                     .nombre("Carlos")

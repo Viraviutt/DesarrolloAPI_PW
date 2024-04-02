@@ -13,11 +13,12 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.shop.eShop.AbstractIntegrationDBTest;
 import com.shop.eShop.entities.Cliente;
 import com.shop.eShop.entities.Pago;
 import com.shop.eShop.entities.Pedido;
 
-public class PagoRepositoryTest {
+public class PagoRepositoryTest extends AbstractIntegrationDBTest {
 
     @Autowired
     ClienteRepository clienteRepository;
@@ -218,7 +219,7 @@ public class PagoRepositoryTest {
     }
 
     @Test
-    void testFindByIdAndMetodo() {
+    void testFindByIdPedidoAndMetodo() {
 
     }
 

@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Producto {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducto;

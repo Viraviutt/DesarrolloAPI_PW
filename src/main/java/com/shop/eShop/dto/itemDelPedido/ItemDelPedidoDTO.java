@@ -4,7 +4,8 @@ import com.shop.eShop.entities.Pedido;
 import com.shop.eShop.entities.Producto;
 
 
-public record ItemDelPedidoDTO(    
+public record ItemDelPedidoDTO(
+    Long idItemsDelPedido,  
     Pedido idPedido,
     Producto idProducto, 
     Integer cantidad,
