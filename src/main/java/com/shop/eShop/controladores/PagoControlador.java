@@ -25,6 +25,7 @@ import java.util.HashMap;
 @RestController
 @RequestMapping("/api/v1/pagos")
 @Slf4j
+@SuppressWarnings("null")
 public class PagoControlador {
     @Autowired
     private PagoServicio pagoServicio;

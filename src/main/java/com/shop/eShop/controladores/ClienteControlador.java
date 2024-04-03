@@ -24,6 +24,7 @@ import java.util.HashMap;
 @RestController
 @Slf4j
 @RequestMapping("/api/v1/clientes")
+@SuppressWarnings("null")
 public class ClienteControlador {
     
     @Autowired
