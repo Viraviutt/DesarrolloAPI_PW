@@ -30,7 +30,7 @@ public class Pedido {
     private Long idPedido;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "idCliente")
+    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     private Cliente idCliente;
 
     @Column(nullable = false)

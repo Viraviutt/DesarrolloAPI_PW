@@ -128,7 +128,7 @@ public class ClienteRepositoryTest extends AbstractIntegrationDBTest {
         //when
         clienteRepository.save(cliente1);
         clienteRepository.save(cliente2);
-        List<Cliente> clienteEncontrado = clienteRepository.findByCorreo("car");
+        List<Cliente> clienteEncontrado = clienteRepository.findByCorreo("car").orElse(null);
         //then
         assertNotNull(clienteEncontrado);
         assertEquals(2, clienteEncontrado.size());
@@ -145,7 +145,7 @@ public class ClienteRepositoryTest extends AbstractIntegrationDBTest {
         //when
         clienteRepository.save(cliente1);
         clienteRepository.save(cliente2);
-        List<Cliente> clienteEncontrado = clienteRepository.findByDireccion("CaLle 1");
+        List<Cliente> clienteEncontrado = clienteRepository.findByDireccion("CaLle 1").orElse(null);
         //then
         assertNotNull(clienteEncontrado);
         assertEquals(2, clienteEncontrado.size());
@@ -160,7 +160,7 @@ public class ClienteRepositoryTest extends AbstractIntegrationDBTest {
         //when
         clienteRepository.save(cliente1);
         clienteRepository.save(cliente2);
-        List<Cliente> clienteEncontrado = clienteRepository.findByNombre("CAr");
+        List<Cliente> clienteEncontrado = clienteRepository.findByNombre("CAr").orElse(null);
         //then
         assertNotNull(clienteEncontrado);
         assertEquals(2, clienteEncontrado.size());

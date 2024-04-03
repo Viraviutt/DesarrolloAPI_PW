@@ -26,11 +26,11 @@ public class ItemDelPedido {
     private Long idItemsDelPedido;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "idPedido")
+    @JoinColumn(name = "idPedido", referencedColumnName = "idPedido")
     private Pedido idPedido;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "idProducto")
+    @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
     private Producto idProducto;
     
     @Column(nullable = false)

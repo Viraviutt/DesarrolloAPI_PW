@@ -163,7 +163,7 @@ public class PedidoRepositoryTest extends AbstractIntegrationDBTest{
         pedidoRepository.save(pedido2);
         pedidoRepository.save(pedido3);
         pedidoRepository.save(pedido4);
-        List<Pedido> pedidoEncontrado = pedidoRepository.findByCliente(cliente1);
+        List<Pedido> pedidoEncontrado = pedidoRepository.findByCliente(cliente1).orElse(null);
         //then
         assertNotNull(pedidoEncontrado);
         assertEquals(2, pedidoEncontrado.size());
@@ -184,7 +184,7 @@ public class PedidoRepositoryTest extends AbstractIntegrationDBTest{
         pedidoRepository.save(pedido2);
         pedidoRepository.save(pedido3);
         pedidoRepository.save(pedido4);
-        List<Pedido> pedidoEncontrado = pedidoRepository.findByClienteAndEstado(cliente1, "PENDIENTE");
+        List<Pedido> pedidoEncontrado = pedidoRepository.findByClienteAndEstado(cliente1, "PENDIENTE").orElse(null);
         //then
         assertNotNull(pedidoEncontrado);
         assertEquals(1, pedidoEncontrado.size());
@@ -202,7 +202,7 @@ public class PedidoRepositoryTest extends AbstractIntegrationDBTest{
         pedidoRepository.save(pedido2);
         pedidoRepository.save(pedido3);
         pedidoRepository.save(pedido4);
-        List<Pedido> pedidoEncontrado = pedidoRepository.findByEstado("PENDIENTE");
+        List<Pedido> pedidoEncontrado = pedidoRepository.findByEstado("PENDIENTE").orElse(null);
         //then
         assertNotNull(pedidoEncontrado);
         assertEquals(2, pedidoEncontrado.size());
@@ -221,7 +221,7 @@ public class PedidoRepositoryTest extends AbstractIntegrationDBTest{
         pedidoRepository.save(pedido2);
         pedidoRepository.save(pedido3);
         pedidoRepository.save(pedido4);
-        List<Pedido> pedidoEncontrado = pedidoRepository.findByFecha(Timestamp.valueOf(LocalDateTime.of(2024, 3, 28, 12, 35, 32)));
+        List<Pedido> pedidoEncontrado = pedidoRepository.findByFecha(Timestamp.valueOf(LocalDateTime.of(2024, 3, 28, 12, 35, 32))).orElse(null);
         //then
         assertNotNull(pedidoEncontrado);
         assertEquals(1, pedidoEncontrado.size());
@@ -239,7 +239,7 @@ public class PedidoRepositoryTest extends AbstractIntegrationDBTest{
         pedidoRepository.save(pedido2);
         pedidoRepository.save(pedido3);
         pedidoRepository.save(pedido4);
-        List<Pedido> pedidoEncontrado = pedidoRepository.findByFechaAfter(Timestamp.valueOf(LocalDateTime.of(2023, 5, 27, 15, 24, 14)));
+        List<Pedido> pedidoEncontrado = pedidoRepository.findByFechaAfter(Timestamp.valueOf(LocalDateTime.of(2023, 5, 27, 15, 24, 14))).orElse(null);
         //then
         assertNotNull(pedidoEncontrado);
         assertEquals(3, pedidoEncontrado.size());
@@ -257,7 +257,7 @@ public class PedidoRepositoryTest extends AbstractIntegrationDBTest{
         pedidoRepository.save(pedido2);
         pedidoRepository.save(pedido3);
         pedidoRepository.save(pedido4);
-        List<Pedido> pedidoEncontrado = pedidoRepository.findByFechaBefore(Timestamp.valueOf(LocalDateTime.now()));
+        List<Pedido> pedidoEncontrado = pedidoRepository.findByFechaBefore(Timestamp.valueOf(LocalDateTime.now())).orElse(null);
         //then
         assertNotNull(pedidoEncontrado);
         assertEquals(4, pedidoEncontrado.size());
@@ -276,7 +276,7 @@ public class PedidoRepositoryTest extends AbstractIntegrationDBTest{
         pedidoRepository.save(pedido2);
         pedidoRepository.save(pedido3);
         pedidoRepository.save(pedido4);
-        List<Pedido> pedidoEncontrado = pedidoRepository.findByFechaBetween(Timestamp.valueOf(LocalDateTime.of(2022, 5, 27, 15, 24, 14)), Timestamp.valueOf(LocalDateTime.of(2024, 3, 26, 18, 20, 46)));
+        List<Pedido> pedidoEncontrado = pedidoRepository.findByFechaBetween(Timestamp.valueOf(LocalDateTime.of(2022, 5, 27, 15, 24, 14)), Timestamp.valueOf(LocalDateTime.of(2024, 3, 26, 18, 20, 46))).orElse(null);
         //then
         assertNotNull(pedidoEncontrado);
         assertEquals(3, pedidoEncontrado.size());

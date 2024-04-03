@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testcontainers.shaded.org.yaml.snakeyaml.scanner.Scanner;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -102,7 +103,6 @@ public class PagoRepositoryTest extends AbstractIntegrationDBTest {
 
     @BeforeEach
     void setUp() {
-        pagoRepository.deleteAll();
         clienteRepository.save(cliente1);
         clienteRepository.save(cliente2);
         pedidoRepository.save(pedido1);
@@ -113,13 +113,16 @@ public class PagoRepositoryTest extends AbstractIntegrationDBTest {
 
     @AfterEach
     void tearDown() {
-        clienteRepository.deleteAll();
+        pagoRepository.deleteAll();
+        pagoRepository.flush();
         pedidoRepository.deleteAll();
-        
+        pedidoRepository.flush();
+        clienteRepository.deleteAll();
+        clienteRepository.flush();
     }
 
     @Test
-    void givenAnPago_whenSave_thenClientewithId(){ //CREATE
+    void testCreate(){ //CREATE
         //given pago
         //when
         Pago pagoSaved = pagoRepository.save(pago1);
@@ -131,70 +134,63 @@ public class PagoRepositoryTest extends AbstractIntegrationDBTest {
     }
 
     @Test
-    void givenAnPedido_testFindAll(){ //READ
+    void testFindAll(){ //READ
         //given pedido
         //when
-        pedidoRepository.save(pedido1);
-        pedidoRepository.save(pedido2);
-        pedidoRepository.save(pedido3);
-        pedidoRepository.save(pedido4);
-        List<Pedido> pedidoEncontrado = pedidoRepository.findAll();
+        pagoRepository.save(pago1);
+        pagoRepository.save(pago2);
+        pagoRepository.save(pago3);
+        pagoRepository.save(pago4);
+        List<Pago> pagoEncontrado = pagoRepository.findAll();
         //then
-        assertNotNull(pedidoEncontrado);
-        assertEquals(4, pedidoEncontrado.size());
+        assertNotNull(pagoEncontrado);
+        assertEquals(4, pagoEncontrado.size());
 
     }
 
     @Test
-    void givenAnPedido_testFindById(){ //READ
+    void testFindById(){ //READ
         //given pedido
         //when
-        Long id1 = pedidoRepository.save(pedido2).getIdPedido();
-        Long id2 = pedidoRepository.save(pedido3).getIdPedido();
-        Pedido pedidoEncontrado1 = pedidoRepository.findById(id1).orElse(null);
-        Pedido pedidoEncontrado2 = pedidoRepository.findById(id2).orElse(null);
+        Long id1 = pagoRepository.save(pago2).getIdPago();
+        Long id2 = pagoRepository.save(pago3).getIdPago();
+        Pago pagoEncontrado1 = pagoRepository.findById(id1).orElse(null);
+        Pago pagoEncontrado2 = pagoRepository.findById(id2).orElse(null);
         
         //then
-        assertEquals("Carmen", pedidoEncontrado1.getIdCliente().getNombre());
-        assertEquals(Timestamp.valueOf(LocalDateTime.of(2023, 5, 27, 15, 24, 14)), pedidoEncontrado1.getFechaPedido());
-        assertEquals("ENTREGADO", pedidoEncontrado1.getEstado());
-        assertEquals("Carlos", pedidoEncontrado2.getIdCliente().getNombre());
-        assertEquals(Timestamp.valueOf(LocalDateTime.of(2024, 2, 15, 12, 35, 32)), pedidoEncontrado2.getFechaPedido());
-        assertEquals("ENVIADO", pedidoEncontrado2.getEstado());
+        assertEquals("Carlos", pagoEncontrado1.getIdPedido().getIdCliente().getNombre());
+        assertEquals("NEQUI", pagoEncontrado1.getMetodoPago());
+        assertEquals(3342.58, pagoEncontrado1.getMonto());
+        assertEquals("Carmen", pagoEncontrado2.getIdPedido().getIdCliente().getNombre());
+        assertEquals(632.23, pagoEncontrado2.getMonto());
+        assertEquals("EFECTIVO", pagoEncontrado2.getMetodoPago());
 
     }
 
     @Test
-    void givenAnCliente_testUpdate(){ //UPDATE
+    void testUpdate(){ //UPDATE
         //given pedido
         //when
-        pedidoRepository.save(pedido2);
-        pedido2.setEstado("ENVIADO");
-        pedidoRepository.save(pedido2);
+        pagoRepository.save(pago2);
+        pago2.setMetodoPago("EFECTIVO");
+        pagoRepository.save(pago2);
 
-        pedidoRepository.save(pedido1);
-        pedido1.setFechaPedido(Timestamp.valueOf(LocalDateTime.of(2024, 3, 26, 18, 20, 46)));
-        pedidoRepository.save(pedido1);
-
-        Pedido pedidoEncontrado1 = pedidoRepository.findById(pedido2.getIdPedido()).orElse(null);
-        Pedido pedidoEncontrado2 = pedidoRepository.findById(pedido1.getIdPedido()).orElse(null);
+        Pago pagoEncontrado1 = pagoRepository.findById(pago2.getIdPago()).orElse(null);
         //then
-        assertNotNull(pedidoEncontrado1);
-        assertNotNull(pedidoEncontrado2);
-        assertEquals("ENVIADO", pedidoEncontrado1.getEstado());
-        assertEquals(Timestamp.valueOf(LocalDateTime.of(2024, 3, 26, 18, 20, 46)), pedidoEncontrado2.getFechaPedido());
+        assertNotNull(pagoEncontrado1);
+        assertEquals("EFECTIVO", pagoEncontrado1.getMetodoPago());
 
     }
 
     @Test
-    void givenAnCliente_testDelete(){ //DELETE
+    void testDelete(){ //DELETE
         //given pedido
         //when
-        Long id = pedidoRepository.save(pedido1).getIdPedido();
-        pedidoRepository.deleteById(id);
-        Pedido pedidoEncontrado = pedidoRepository.findById(id).orElse(null);
+        Long id = pagoRepository.save(pago1).getIdPago();
+        pagoRepository.deleteById(id);
+        Pago pagoEncontrado = pagoRepository.findById(id).orElse(null);
         //then
-        assertNull(pedidoEncontrado);
+        assertNull(pagoEncontrado);
 
     }
 

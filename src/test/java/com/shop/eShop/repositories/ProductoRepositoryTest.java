@@ -128,7 +128,7 @@ public class ProductoRepositoryTest extends AbstractIntegrationDBTest{
         productoRepository.save(producto1);
         productoRepository.save(producto2);
         productoRepository.save(producto3);
-        List<Producto> productoEncontrado = productoRepository.findByNombre("Le");
+        List<Producto> productoEncontrado = productoRepository.findByNombre("Le").orElse(null);
         //then
         assertNotNull(productoEncontrado);
         assertEquals(2, productoEncontrado.size());
@@ -148,7 +148,7 @@ public class ProductoRepositoryTest extends AbstractIntegrationDBTest{
         productoRepository.save(producto1);
         productoRepository.save(producto2);
         productoRepository.save(producto3);
-        List<Producto> productoEncontrado = productoRepository.findByPrecioANDStock(4000D, 4);
+        List<Producto> productoEncontrado = productoRepository.findByPrecioANDStock(4000D, 4).orElse(null);
         //then
         assertNotNull(productoEncontrado);
         assertEquals(2, productoEncontrado.size());
@@ -164,7 +164,7 @@ public class ProductoRepositoryTest extends AbstractIntegrationDBTest{
         productoRepository.save(producto1);
         productoRepository.save(producto2);
         productoRepository.save(producto3);
-        List<Producto> productoEncontrado = productoRepository.findByStock();
+        List<Producto> productoEncontrado = productoRepository.findByStock().orElse(null);
         //then
         assertNotNull(productoEncontrado);
         assertEquals(3, productoEncontrado.size());

@@ -15,14 +15,14 @@ public interface ItemDelPedidoRepository extends JpaRepository<ItemDelPedido, Lo
 
     /* find by id del pedido */
     @Query("SELECT i FROM ItemDelPedido i WHERE i.idPedido.idPedido = ?1")
-    List<ItemDelPedido> findByIdDelPedido(Long id);
+    Optional<List<ItemDelPedido>> findByIdDelPedido(Long id);
 
     /* find by producto */
-    @Query("SELECT i FROM ItemDelPedido i WHERE i.idProducto = ?1")
-    List<ItemDelPedido> findByIdDelProducto(Producto Producto);
+    @Query("SELECT i FROM ItemDelPedido i WHERE i.idProducto.idProducto = ?1")
+    Optional<List<ItemDelPedido>> findByIdDelProducto(Long id);
 
     /* calc sum for total de ventas para un producto */
-    @Query("SELECT SUM(i.precioUnitario)*i.cantidad FROM ItemDelPedido i WHERE i.idProducto = ?1")
-    Double calcSumForTotalDeVentas(Producto Producto);
+    @Query("SELECT SUM(i.cantidad) FROM ItemDelPedido i WHERE i.idProducto.idProducto = ?1")
+    Optional<Double> calcSumForTotalDeVentas(Long id);
 
 }

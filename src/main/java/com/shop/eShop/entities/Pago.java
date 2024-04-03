@@ -31,7 +31,7 @@ public class Pago {
     private Long idPago;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "idPedido")
+    @JoinColumn(name = "idPedido", referencedColumnName = "idPedido")
     private Pedido idPedido;
 
     @Column(nullable = false)

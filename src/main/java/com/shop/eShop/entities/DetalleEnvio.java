@@ -26,7 +26,7 @@ public class DetalleEnvio {
     private Long idEnvio;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "idPedido")
+    @JoinColumn(name = "idPedido", referencedColumnName = "idPedido")
     private Pedido idPedido;
 
     @Column(nullable = false)

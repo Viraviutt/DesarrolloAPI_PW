@@ -31,7 +31,7 @@ public interface PagoRepository extends JpaRepository<Pago, Long> {
 
     /* find by id del pedido y metodo de pago */
     @Query("SELECT p FROM Pago p WHERE p.idPedido.idPedido = ?1 AND p.metodoPago = ?2")
-    Optional<Pago> findByIdPedidoAndMetodo(Long idPedido, String metodoPago);
+    Optional<Pago> findByIdPedidoAndMetodoPago(Long idPedido, String metodoPago);
 
     /* find by metodo de pago */
     @Query("SELECT p FROM Pago p WHERE p.metodoPago = ?1")

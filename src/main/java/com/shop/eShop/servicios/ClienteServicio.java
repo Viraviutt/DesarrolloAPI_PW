@@ -56,7 +56,7 @@ public class ClienteServicio {
 
         try {
 
-            List<Cliente> clientes = clienteRepository.findByNombre(nombre);
+            List<Cliente> clientes = clienteRepository.findByNombre(nombre).orElse(null);
             return clientes.stream().map(ClienteMapper.INSTANCE::toDTO).toList();
 
         } catch (Exception e){
@@ -72,7 +72,7 @@ public class ClienteServicio {
 
         try {
 
-            List<Cliente> clientes = clienteRepository.findByCorreo(email);
+            List<Cliente> clientes = clienteRepository.findByCorreo(email).orElse(null);
             return clientes.stream().map(ClienteMapper.INSTANCE::toDTO).toList();
 
         } catch (Exception e) {
@@ -88,7 +88,7 @@ public class ClienteServicio {
 
         try{
 
-            List<Cliente> clientes = clienteRepository.findByDireccion(direccion);
+            List<Cliente> clientes = clienteRepository.findByDireccion(direccion).orElse(null);
             return clientes.stream().map(ClienteMapper.INSTANCE::toDTO).toList();
 
         } catch (Exception e) {
@@ -136,9 +136,11 @@ public class ClienteServicio {
 
             Cliente clienteAActualizar = clienteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException ("El cliente no existe"));
             Cliente cliente = ClienteMapper.INSTANCE.toEntity(clienteDTO);
-            clienteAActualizar = clienteAActualizar.updateOnlyNecesary(cliente);
+            
+            cliente.setIdCliente(clienteAActualizar.getIdCliente());
 
-            clienteRepository.save(null);
+            clienteAActualizar = clienteRepository.save(cliente);
+
             Cliente savedCliente = clienteRepository.save(clienteAActualizar);
             return ClienteMapper.INSTANCE.toDTO(savedCliente);
 

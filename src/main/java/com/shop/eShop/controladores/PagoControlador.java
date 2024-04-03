@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shop.eShop.dto.pago.PagoDTO;
@@ -43,6 +44,18 @@ public class PagoControlador {
     public ResponseEntity<HashMap<String, Object>> getPagoById(@PathVariable("id") Long id) {
         log.info("Obteniendo pagos de items por id: " + id);
         PagoDTO data = pagoServicio.getPagoById(id);
+        if (data == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        HashMap<String, Object> response = new HashMap<>();
+        response.put("data", data);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/date-range?startDate={startDate}&endDate={endDate}")
+    public ResponseEntity<HashMap<String, Object>> getPagoFechaBetween(@RequestParam("startDate") String fechaInicio, @RequestParam("startDate") String fechaFinal) {
+        log.info("Obteniendo pagos entre fecha: \n" + "Fecha inicial: " + fechaInicio + "\n" + "Fecha final: "+ fechaFinal);
+        PagoDTO data = pagoServicio.getPagoById(null);
         if (data == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
