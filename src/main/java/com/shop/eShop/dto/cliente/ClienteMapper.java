@@ -11,7 +11,6 @@ public interface ClienteMapper {
 
     ClienteMapper INSTANCE = Mappers.getMapper(ClienteMapper.class);
 
-    @Mapping(target = "direccion", ignore = true)
     Cliente toEntity(ClienteDTO clienteDTO);
     ClienteDTO toDTO(Cliente cliente);
 }

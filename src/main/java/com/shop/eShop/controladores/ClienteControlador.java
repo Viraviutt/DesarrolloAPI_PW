@@ -70,12 +70,12 @@ public class ClienteControlador {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/email/{email}")
-    public ResponseEntity<HashMap<String, Object>> getClientesByEmail(@PathVariable("email") String email) {
+    @GetMapping("/correo/{correo}")
+    public ResponseEntity<HashMap<String, Object>> getClientesByEmail(@PathVariable("correo") String correo) {
 
-        log.info("Obteniendo cliente por email: " + email);
+        log.info("Obteniendo cliente por correo: " + correo);
         HashMap<String, Object> response = new HashMap<>();
-        List<ClienteDTO> cliente = clienteServicio.getClienteByEmail(email);
+        List<ClienteDTO> cliente = clienteServicio.getClienteByEmail(correo);
         
         if (cliente == null) {
 

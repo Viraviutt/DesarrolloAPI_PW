@@ -30,7 +30,7 @@ public class PagoControlador {
     @Autowired
     private PagoServicio pagoServicio;
 
-    @GetMapping("") 
+    @GetMapping("")
     public ResponseEntity<HashMap<String, Object>> getPayments() {
 
         log.info("Obteniendo el pago de todos los items");
