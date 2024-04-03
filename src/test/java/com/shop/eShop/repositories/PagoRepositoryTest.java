@@ -4,7 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testcontainers.shaded.org.yaml.snakeyaml.scanner.Scanner;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,6 +18,7 @@ import com.shop.eShop.entities.Cliente;
 import com.shop.eShop.entities.Pago;
 import com.shop.eShop.entities.Pedido;
 
+@SuppressWarnings("null")
 public class PagoRepositoryTest extends AbstractIntegrationDBTest {
 
     @Autowired

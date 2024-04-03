@@ -7,27 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.shop.eShop.dto.itemDelPedido.ItemDelPedidoDTO;
 import com.shop.eShop.dto.itemDelPedido.ItemDelPedidoMapper;
-import com.shop.eShop.dto.producto.ProductoDTO;
-import com.shop.eShop.dto.itemDelPedido.ItemDelPedidoDTO;
-import com.shop.eShop.dto.itemDelPedido.ItemDelPedidoMapper;
 import com.shop.eShop.entities.ItemDelPedido;
-import com.shop.eShop.entities.Producto;
-import com.shop.eShop.entities.ItemDelPedido;
-import com.shop.eShop.repositories.ItemDelPedidoRepository;
-import com.shop.eShop.repositories.ProductoRepository;
 import com.shop.eShop.repositories.ItemDelPedidoRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@SuppressWarnings("null")
 public class ItemDelPedidoServicio {
 
     @Autowired
     private ItemDelPedidoRepository itemDelPedidoRepository;
-
-    @Autowired
-    private ProductoRepository productoRepository;
 
     public List<ItemDelPedidoDTO> getAllItemsDelPedido() {
 

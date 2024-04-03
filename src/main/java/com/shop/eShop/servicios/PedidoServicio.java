@@ -6,8 +6,6 @@ import java.sql.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.shop.eShop.dto.cliente.ClienteDTO;
-import com.shop.eShop.dto.cliente.ClienteMapper;
 import com.shop.eShop.dto.pedido.PedidoDTO;
 import com.shop.eShop.dto.pedido.PedidoMapper;
 import com.shop.eShop.entities.Cliente;
@@ -19,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@SuppressWarnings("null")
 public class PedidoServicio {
     /* C-> CREATE R-> READ U-> UPDATE D-> DELETE */
     @Autowired

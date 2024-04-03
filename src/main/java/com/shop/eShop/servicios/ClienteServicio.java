@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@SuppressWarnings("null")
 public class ClienteServicio {
 
     @Autowired
@@ -153,6 +154,7 @@ public class ClienteServicio {
         return null;
     }
 
+    
     public boolean deleteCliente(Long id) {
 
         try {

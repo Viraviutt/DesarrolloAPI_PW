@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 import com.shop.eShop.entities.ItemDelPedido;
-import com.shop.eShop.entities.Producto;
 
 @RepositoryRestController
 public interface ItemDelPedidoRepository extends JpaRepository<ItemDelPedido, Long> {

@@ -9,12 +9,12 @@ import com.shop.eShop.dto.detalleEnvio.DetalleEnvioDTO;
 import com.shop.eShop.dto.detalleEnvio.DetalleEnvioMapper;
 import com.shop.eShop.entities.DetalleEnvio;
 import com.shop.eShop.repositories.DetalleEnvioRepository;
-import com.shop.eShop.repositories.DetalleEnvioRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@SuppressWarnings("null")
 public class DetalleEnvioServicio {
 
     @Autowired
