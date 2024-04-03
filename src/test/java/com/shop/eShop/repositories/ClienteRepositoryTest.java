@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.shop.eShop.AbstractIntegrationDBTest;
 import com.shop.eShop.entities.Cliente;
 
+@SuppressWarnings("null")
 public class ClienteRepositoryTest extends AbstractIntegrationDBTest {
 
     @Autowired

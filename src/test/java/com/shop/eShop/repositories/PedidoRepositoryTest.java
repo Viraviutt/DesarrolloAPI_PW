@@ -17,6 +17,7 @@ import com.shop.eShop.AbstractIntegrationDBTest;
 import com.shop.eShop.entities.Cliente;
 import com.shop.eShop.entities.Pedido;
 
+@SuppressWarnings("null")
 public class PedidoRepositoryTest extends AbstractIntegrationDBTest{
 
     @Autowired

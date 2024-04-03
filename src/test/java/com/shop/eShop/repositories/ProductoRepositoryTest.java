@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.shop.eShop.AbstractIntegrationDBTest;
-import com.shop.eShop.entities.Cliente;
 import com.shop.eShop.entities.Producto;
 
+@SuppressWarnings("null")
 public class ProductoRepositoryTest extends AbstractIntegrationDBTest{
 
     @Autowired
