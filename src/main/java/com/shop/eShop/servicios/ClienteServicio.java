@@ -69,11 +69,11 @@ public class ClienteServicio {
         return List.of();    
     }
 
-    public List<ClienteDTO> getClienteByEmail(String email) {
+    public List<ClienteDTO> getClienteByCorreo(String correo) {
 
         try {
 
-            List<Cliente> clientes = clienteRepository.findByCorreo(email).orElse(null);
+            List<Cliente> clientes = clienteRepository.findByCorreo(correo).orElse(null);
             return clientes.stream().map(ClienteMapper.INSTANCE::toDTO).toList();
 
         } catch (Exception e) {
