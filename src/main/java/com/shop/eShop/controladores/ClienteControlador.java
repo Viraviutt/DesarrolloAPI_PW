@@ -71,11 +71,11 @@ public class ClienteControlador {
     }
 
     @GetMapping("/correo/{correo}")
-    public ResponseEntity<HashMap<String, Object>> getClientesByEmail(@PathVariable("correo") String correo) {
+    public ResponseEntity<HashMap<String, Object>> getClientesByCorreo(@PathVariable("correo") String correo) {
 
         log.info("Obteniendo cliente por correo: " + correo);
         HashMap<String, Object> response = new HashMap<>();
-        List<ClienteDTO> cliente = clienteServicio.getClienteByEmail(correo);
+        List<ClienteDTO> cliente = clienteServicio.getClienteByCorreo(correo);
         
         if (cliente == null) {
 
