@@ -27,9 +27,13 @@ public class Cliente {
     private String nombre;
 
     @Column(nullable = false, unique = true)
+    private String password;
+
+    @Column(nullable = false, unique = true)
     private String correo;
 
     @Column(nullable = false)
     private String direccion;
 
+    private String roles;
 }
